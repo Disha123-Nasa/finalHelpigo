@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 export const authMiddle=  async(req,res,next)=>{
     const authHeader = req.headers.authorization;
-    
+        console.log(req.headers.authorization);
         if(!authHeader?.startsWith('Bearer ')) {
           return res.status(401).json({ msg: "No token provider"});
         }
@@ -11,6 +11,7 @@ export const authMiddle=  async(req,res,next)=>{
           
           const decoded = jwt.verify(token,process.env.JWT_SECRET);
           req.user=decoded;
+          req.id = decoded.id;
         next();
         }
 

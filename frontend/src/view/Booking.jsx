@@ -25,61 +25,59 @@ const Booking = () => {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+    e.preventDefault();
 
-        const selectedDate = new Date(formData.date);
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+    const selectedDate = new Date(formData.date);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-        if (selectedDate < today) {
-            setErrorMessage('Please select a date in the future');
+    if (selectedDate < today) {
+        setErrorMessage('Please select a date in the future');
+        return;
+    }
+
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            setErrorMessage('You must be logged in to make a booking.');
             return;
         }
 
-        try {
-            // ✅ get token from localStorage
-            const token = localStorage.getItem('token');
-            if (!token) {
-                setErrorMessage('You must be logged in to make a booking.');
-                return;
-            }
-
-            // ✅ Send POST with token in Authorization header
-            await axios.post(
-                'http://localhost:5000/api/bookings',
-                formData,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    },
+        // ✅ Send request correctly
+        await axios.post(
+            'http://localhost:5000/api/bookings',
+            formData,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
                 }
-            );
+            }
+        );
 
-            console.log("Booking success");
-            setSuccessMessageVisible(true);
+        console.log("Booking success");
+        setSuccessMessageVisible(true);
 
-            // Reset form after success
-            setTimeout(() => {
-                setFormData({
-                    service: '',
-                    name: '',
-                    email: '',
-                    phone: '',
-                    date: '',
-                    time: '',
-                    notes: ''
-                });
-                setSuccessMessageVisible(false);
-            }, 3000);
+        setTimeout(() => {
+            setFormData({
+                service: '',
+                name: '',
+                email: '',
+                phone: '',
+                date: '',
+                time: '',
+                notes: ''
+            });
+            setSuccessMessageVisible(false);
+        }, 3000);
 
-        } catch (error) {
-            console.error(error);
-            setErrorMessage(
-                error.response?.data?.message || 
-                'There was an error submitting your booking. Please try again.'
-            );
-        }
-    };
+    } catch (error) {
+        console.error(error);
+        setErrorMessage(
+            error.response?.data?.message ||
+            'There was an error submitting your booking. Please try again.'
+        );
+    }
+};
 
     return (
         <div className="boxes">

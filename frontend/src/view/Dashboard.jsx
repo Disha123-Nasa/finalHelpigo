@@ -14,7 +14,7 @@ function Dashboard() {
             navigation('/login');
         }
 
-        axios.get('http://localhost:5000/api/users', {
+        axios.get('http://localhost:5000/api/auth', {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then((res) => setUser(res.data))
