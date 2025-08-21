@@ -1,0 +1,204 @@
+:root {
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --secondary: #10b981;
+  --dark: #1f2937;
+  --light: #f9fafb;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--light);
+}
+
+.navbar1 {
+  top:0;
+  height:70px;
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:10px 20px ;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position:fixed;
+  z-index:1000;
+}
+
+.navbar h1 {
+  color: var(--primary);
+}
+
+.search-container {
+     width: 200px;
+      padding: 10px;
+      cursor: pointer;
+      flex:1;
+display: flex;
+       justify-content: center;
+  
+  gap: 10px;
+}
+
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  width: 300px;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.search-button,
+.login-button {
+  padding: 10px 15px;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-button {
+  background-color: var(--primary);
+  color: white;
+}
+
+.search-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.login-button {
+  background-color: var(--primary);
+  color: white;
+}
+
+.login-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 80px ;
+}
+
+.filter-button {
+     position: relative; /* or absolute */
+       z-index: 10;
+  background-color: white;
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.filter-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.service-cards {
+  display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items:flex-start ;
+     gap:20px;
+  padding: 20px;
+}
+
+.card {
+    flex: 0 1 21%;;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--dark);
+}
+
+.card-description {
+  color: #555;
+  margin: 0.5rem 0;
+}
+
+.card-price {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.book-button {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.book-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  width: 300px;
+  text-align: center;
+}
+
+.close-modal {
+  cursor: pointer;
+  color: #aaa;
+  float: right;
+  font-size: 20px;
+}
+
+.close-modal:hover {
+  color: black;
+}
